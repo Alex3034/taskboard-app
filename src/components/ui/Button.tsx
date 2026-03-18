@@ -30,6 +30,8 @@ interface ButtonProps {
 
   // Clases CSS adicionales para personalizar el botón desde fuera.
   className?: string;
+
+  icon?: React.ReactNode;
 }
 
 // El componente Button recibe las props desestructuradas con sus tipos.
@@ -41,6 +43,7 @@ const Button: React.FC<ButtonProps> = ({
   disabled = false,
   type = 'button',
   className = '',
+  icon,
 }): React.ReactElement => {
 
   // Clases base que siempre se aplican al botón
@@ -64,6 +67,7 @@ const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
       className={`${baseClasses} ${variantClasses[variant]} ${className}`}
     >
+      {icon && <span className="mr-2">{icon}</span>}
       {children}
     </button>
   );
