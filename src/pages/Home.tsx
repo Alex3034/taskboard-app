@@ -8,6 +8,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../components/ui/Button';
+import Header from '../components/ui/Header';
 
 // React.FC es el tipo de un componente funcional de React.
 // FC viene de "Function Component".
@@ -17,16 +18,7 @@ const Home: React.FC = (): React.ReactElement => {
     <div className="min-h-screen bg-gray-900 text-gray-100 flex flex-col">
 
       {/* Barra de navegación superior */}
-      <header className="border-b border-gray-800 px-6 py-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <h1 className="text-xl font-bold text-indigo-400 tracking-tight">
-            📋 TaskBoard
-          </h1>
-          <Link to="/login">
-            <Button variant="secondary">Iniciar sesión</Button>
-          </Link>
-        </div>
-      </header>
+      <Header title="📋 TaskBoard" shouldShowLoginButton={true} />
 
       {/* Sección hero: contenido central de bienvenida */}
       <main className="flex-1 flex flex-col items-center justify-center px-6 text-center">
