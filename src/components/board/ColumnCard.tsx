@@ -11,16 +11,19 @@ const ColumnCard: React.FC<ColumnCardProps> = ({
     tasks,
 }): React.ReactElement => {
     return (
-        <div className="bg-white rounded-lg shadow p-4 w-full">
+        <div className="bg-gray-800 rounded-lg shadow p-4 w-full">
             <h2 className="text-xl font-semibold mb-4">{title}</h2>
-            {tasks.map((task) => (
-                <TaskCard
-                    key={task.id}
-                    id={task.id}
-                    title={task.title}
-                    description={task.description}
-                    status={task.status}                />
-            ))}
+            <div className="space-y-4">
+                {tasks.map((task) => (
+                    <TaskCard
+                        key={task.id}
+                        id={task.id}
+                        title={task.title}
+                        description={task.description}
+                        status={task.status}
+                    />
+                ))}
+            </div>
         </div>
     );
 }

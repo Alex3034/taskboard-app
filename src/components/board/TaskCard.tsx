@@ -11,15 +11,15 @@ const TaskCard: React.FC<TaskCardProps> = ({
     status,
 }): React.ReactElement => {
     const statusColors: Record<'todo' | 'in-progress' | 'done', string> = {
-        'todo': 'bg-gray-200',
-        'in-progress': 'bg-yellow-200',
-        'done': 'bg-green-200',
+        'todo': 'bg-gray-600',
+        'in-progress': 'bg-yellow-600',
+        'done': 'bg-green-600',
     };
 
     return (
         <div className={`p-4 rounded-lg shadow ${statusColors[status]}`}>
             <h3 className="text-lg font-semibold mb-2">{title}</h3>
-            <p className="text-gray-700">{description}</p>
+            <p>{description}</p>
         </div>
     );
 }
