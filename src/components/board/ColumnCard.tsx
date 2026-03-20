@@ -1,6 +1,7 @@
 import TaskCard, { type TaskCardProps } from "./TaskCard";
 
-interface ColumnCardProps {
+export interface ColumnCardProps {
+    id: string;
     title: string;
     tasks: TaskCardProps[];
 }
@@ -15,10 +16,10 @@ const ColumnCard: React.FC<ColumnCardProps> = ({
             {tasks.map((task) => (
                 <TaskCard
                     key={task.id}
+                    id={task.id}
                     title={task.title}
                     description={task.description}
-                    status={task.status}
-                />
+                    status={task.status}                />
             ))}
         </div>
     );
