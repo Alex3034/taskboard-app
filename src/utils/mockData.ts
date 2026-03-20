@@ -63,4 +63,4 @@ export const mockTasks: Task[] = [
 
 const getBoards = (): Board[] => mockBoards;
 
-const getTasksByColumn = (columnId: string): Task[] => mockTasks.filter(task => task.columnId === columnId);
+export const getTasksByColumn = (columnId: string): Task[] => mockTasks.filter(task => task.columnId === columnId);
