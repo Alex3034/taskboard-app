@@ -1,4 +1,5 @@
-interface TaskCardProps {
+export interface TaskCardProps {
+    id: string;
     title: string;
     description: string;
     status: 'todo' | 'in-progress' | 'done';
