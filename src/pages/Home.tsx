@@ -9,18 +9,21 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../components/ui/Button';
 import Header from '../components/ui/Header';
-import { mockBoards, mockColumns, getTasksByColumn } from '../utils/mockData';
+import { mockBoards, mockColumns } from '../utils/mockData';
 import BoardView from '../components/board/BoardView';
+import useAppContext from '../context/AppContext';
 
-const columnsWithTasks = mockColumns.map(column => ({
-  id: column.id,
-  title: column.title,
-  tasks: getTasksByColumn(column.id),
-}));
 
 // React.FC es el tipo de un componente funcional de React.
 // FC viene de "Function Component".
 const Home: React.FC = (): React.ReactElement => {
+  const { tasks } = useAppContext();
+  const columnsWithTasks = mockColumns.map(column => ({
+    id: column.id,
+    title: column.title,
+    tasks: tasks.filter(task => task.columnId === column.id),
+  }));
+
   return (
     // Contenedor principal: ocupa toda la pantalla con fondo oscuro
     <div className="min-h-screen bg-gray-900 text-gray-100 flex flex-col">
