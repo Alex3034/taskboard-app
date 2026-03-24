@@ -45,19 +45,19 @@ const AddTaskForm: React.FC<AddTaskFormProps> = ({
             <div className="flex justify-end gap-2">
 
                 <Button
-                    type="submit"
-                    variant="secondary" 
-                    className="text-base px-6 py-3"
-                >
-                    Agregar tarea
-                </Button>
-
-                <Button
                     onClick={onClose}
                     variant="secondary" 
                     className="text-base px-6 py-3"
                 >
                     Cancelar
+                </Button>
+                
+                <Button
+                    type="submit"
+                    variant="primary" 
+                    className="text-base px-6 py-3"
+                >
+                    Agregar tarea
                 </Button>
             </div>
         </form>

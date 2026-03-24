@@ -2,11 +2,12 @@ import TaskCard, { type TaskCardProps } from "./TaskCard";
 import Button from "../ui/Button";
 import AddTaskForm from "./AddTaskForm";
 import { useState } from "react";
+import type { Task } from '../../types';
 
 export interface ColumnCardProps {
     id: string;
     title: string;
-    tasks: TaskCardProps[];
+    tasks: Task[];
 }
 
 const ColumnCard: React.FC<ColumnCardProps> = ({

@@ -8,6 +8,7 @@
 
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AppProvider } from './context/AppContext';
 
 // Importamos las páginas que hemos creado
 import Home from './pages/Home';
@@ -18,15 +19,17 @@ const App: React.FC = (): React.ReactElement => {
     // BrowserRouter: habilita la navegación basada en la URL del navegador.
     // Routes: contenedor de todas las rutas de la app.
     // Route: define qué componente renderizar para cada URL.
-    <BrowserRouter>
-      <Routes>
-        {/* Ruta raíz: cuando la URL es "/" mostramos la página Home */}
-        <Route path="/" element={<Home />} />
+    <AppProvider>
+      <BrowserRouter>
+        <Routes>
+          {/* Ruta raíz: cuando la URL es "/" mostramos la página Home */}
+          <Route path="/" element={<Home />} />
 
-        {/* Ruta de login: cuando la URL es "/login" mostramos Login */}
-        <Route path="/login" element={<Login />} />
-      </Routes>
-    </BrowserRouter>
+          {/* Ruta de login: cuando la URL es "/login" mostramos Login */}
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </BrowserRouter>
+    </AppProvider>
   );
 };
 
