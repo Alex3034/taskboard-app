@@ -12,6 +12,7 @@ interface AppContextType {
   setUser: (user: User | null) => void;
   tasks: Task[];
   addTask: (title: string, description: string, columnId: string) => void;
+  editTask: (id: string, title: string, description: string) => void;
 }
 
 const columnStatusMap: Record<string, Task['status']> = {
@@ -25,6 +26,7 @@ const AppContext = React.createContext<AppContextType>({
   setUser: () => { },
   tasks: [],
   addTask: () => { },
+  editTask: () => { },
 });
 
 const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -42,8 +44,15 @@ const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     setTasks([...tasks, newTask]);
   };
 
+  const editTask = (id: string, title: string, description: string): void => {
+    const updatedTasks = tasks.map((task) =>
+      task.id === id ? { ...task, title, description } : task
+    );
+    setTasks(updatedTasks);
+  };
+
   return (
-    <AppContext.Provider value={{ user, setUser, tasks, addTask }}>
+    <AppContext.Provider value={{ user, setUser, tasks, addTask, editTask }}>
       {children}
     </AppContext.Provider>
   );
