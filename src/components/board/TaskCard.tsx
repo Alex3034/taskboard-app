@@ -21,7 +21,7 @@ const TaskCard: React.FC<TaskCardProps> = ({
         'done': 'bg-green-600',
     };
 
-    const { editTask } = useAppContext();
+    const { editTask, deleteTask } = useAppContext();
     const [isEditing, setIsEditing] = useState(false);
     const [taskTitle, setTaskTitle] = useState(title);
     const [taskDescription, setTaskDescription] = useState(description);
@@ -78,6 +78,13 @@ const TaskCard: React.FC<TaskCardProps> = ({
                 className="text-sm px-4 py-2 mt-4"
             >
                 Editar
+            </Button>
+            <Button
+                onClick={() => deleteTask(id)}
+                variant="secondary"
+                className="text-sm px-4 py-2 mt-4"
+            >
+                Eliminar
             </Button>
         </div>
     );
