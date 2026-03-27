@@ -20,8 +20,8 @@ const ColumnCard: React.FC<ColumnCardProps> = ({
     return (
         <div className="bg-gray-800 rounded-lg shadow p-4 w-full">
             <h2 className="text-xl font-semibold mb-4">{title}</h2>
-            <Button 
-                variant="primary" 
+            <Button
+                variant="primary"
                 onClick={() => setIsAddingTask(!isAddingTask)}
                 disabled={isAddingTask}
                 className="text-base px-6 py-3">
@@ -30,11 +30,12 @@ const ColumnCard: React.FC<ColumnCardProps> = ({
             <div className="space-y-4">
                 {tasks.map((task) => (
                     <TaskCard
-                    key={task.id}
-                    id={task.id}
+                        key={task.id}
+                        id={task.id}
                         title={task.title}
                         description={task.description}
                         status={task.status}
+                        columnId={task.columnId}
                     />
                 ))}
             </div>

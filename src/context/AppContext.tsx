@@ -14,6 +14,7 @@ interface AppContextType {
   addTask: (title: string, description: string, columnId: string) => void;
   editTask: (id: string, title: string, description: string) => void;
   deleteTask: (id: string) => void;
+  moveTask: (id: string, newColumnId: string) => void;
 }
 
 const columnStatusMap: Record<string, Task['status']> = {
@@ -29,6 +30,7 @@ const AppContext = React.createContext<AppContextType>({
   addTask: () => { },
   editTask: () => { },
   deleteTask: () => { },
+  moveTask: () => { },
 });
 
 const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -58,8 +60,15 @@ const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     setTasks(updatedTasks);
   }
 
+  const moveTask = (id: string, newColumnId: string): void => {
+    const updatedTasks = tasks.map((task) =>
+      task.id === id ? { ...task, columnId: newColumnId, status: columnStatusMap[newColumnId] || 'todo' } : task
+    );
+    setTasks(updatedTasks);
+  }
+
   return (
-    <AppContext.Provider value={{ user, setUser, tasks, addTask, editTask, deleteTask }}>
+    <AppContext.Provider value={{ user, setUser, tasks, addTask, editTask, deleteTask, moveTask }}>
       {children}
     </AppContext.Provider>
   );

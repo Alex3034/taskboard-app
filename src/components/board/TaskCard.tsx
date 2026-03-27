@@ -7,6 +7,7 @@ export interface TaskCardProps {
     title: string;
     description: string;
     status: 'todo' | 'in-progress' | 'done';
+    columnId: string;
 }
 
 const TaskCard: React.FC<TaskCardProps> = ({
@@ -14,6 +15,7 @@ const TaskCard: React.FC<TaskCardProps> = ({
     title,
     description,
     status,
+    columnId
 }): React.ReactElement => {
     const statusColors: Record<'todo' | 'in-progress' | 'done', string> = {
         'todo': 'bg-gray-600',
@@ -21,7 +23,7 @@ const TaskCard: React.FC<TaskCardProps> = ({
         'done': 'bg-green-600',
     };
 
-    const { editTask, deleteTask } = useAppContext();
+    const { editTask, deleteTask, moveTask } = useAppContext();
     const [isEditing, setIsEditing] = useState(false);
     const [taskTitle, setTaskTitle] = useState(title);
     const [taskDescription, setTaskDescription] = useState(description);
@@ -72,6 +74,11 @@ const TaskCard: React.FC<TaskCardProps> = ({
         <div className={`p-4 rounded-lg shadow ${statusColors[status]}`}>
             <h3 className="text-lg font-semibold mb-2">{title}</h3>
             <p>{description}</p>
+            <select value={columnId} onChange={(e) => moveTask(id, e.target.value)} className="mt-2 p-2 rounded bg-gray-800 text-white border border-gray-700">
+                <option value="column-1">Por hacer</option>
+                <option value="column-2">En progreso</option>
+                <option value="column-3">Hecho</option>
+            </select>
             <Button
                 onClick={() => setIsEditing(true)}
                 variant="secondary"
